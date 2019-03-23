@@ -1,6 +1,7 @@
-*{
+
+/* *{
   box-sizing: border-box;
-}
+} */
 
 body {
   background: #dfd29c;
@@ -8,7 +9,7 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.fill{
+.fill {
   background: #349783;
   position: relative;
   height: 150px;
@@ -16,4 +17,26 @@ body {
   top: 5px;
   left: 5px;
   cursor: pointer;
+}
+
+.empty {
+  display: inline-block;
+  height: 160px;
+  width: 160px;
+  margin: 10px;
+  border: 3px darkblue solid;
+  background-color: white;
+}
+
+.hold {
+  border: solid #bbb 4px;
+}
+
+.hovered {
+  background: #f4f4f4;
+  border-style: dashed;
+}
+
+.invisible {
+  display: none;
 }
