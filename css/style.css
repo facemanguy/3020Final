@@ -10,7 +10,7 @@ body {
 }
 
 .fill {
-  background: #349783;
+  background-image: url("../RWB_Stadion.svg");
   position: relative;
   height: 150px;
   width: 150px;

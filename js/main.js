@@ -1,4 +1,5 @@
 //javascript
+let game;
 
 const fill = document.querySelector('.fill');
 const empties = document.querySelectorAll('.empty');
@@ -54,27 +55,59 @@ class Puzzle {
     setUpBoard(){
         this.gameboard.innerHTML = '';
 
-            for (let i = 0; i < 2; i++){
-                let newRow = document.createElement('div');
-                newRow.setAttribute('class','row');
+        for (let i = 0; i < 2; i++){
+            let newRow = document.createElement('div');
+            newRow.setAttribute('class','row');
             
-            for (let j = 0; j < 4; j++){
-                let newCol = document.createElement('div');
-                newCol.setAttribute('class','col-xs-3');
+                for (let j = 0; j < 4; j++){
+                    let newCol = document.createElement('div');
+                    newCol.setAttribute('class','col-xs-3');
 
-                let newTile = document.createElement('span');
-                newTile.setAttribute('class','empty');
-                //newTile.setAttribute('data-x',i);
+                    let newTile = document.createElement('div');
+                    newTile.setAttribute('class','empty');
 
-                //newTile.setAttribute('data-y',j);
+                    
+                    newTile.setAttribute('data-x',i);
 
-                newCol.appendChild(newTile);
+                    newTile.setAttribute('data-y',j);
 
-                newRow.appendChild(newCol);
-            }
-        this.gameboard.appendChild(newRow);
+                    newCol.appendChild(newTile);
+
+                    newRow.appendChild(newCol);
+                }
+
+            this.gameboard.appendChild(newRow);
         }
+
+        let newRow = document.createElement('div');
+        newRow.setAttribute('class','row');        
+
+        for (let u = 0; u < 4; u++){ 
+            let newCol = document.createElement('div');
+            newCol.setAttribute('class','col-xs-3');
+
+            let newTile = document.createElement('div');
+            newTile.setAttribute('class','empty');
+
+            let newFiller = document.createElement('div');
+            newFiller.setAttribute('class', 'fill');
+            console.log('x')
+
+            //newTile.setAttribute('data-x',i);
+
+            //newTile.setAttribute('data-y',j);
+
+            newCol.appendChild(newTile);
+
+            newTile.appendChild(newFiller);
+
+            newRow.appendChild(newCol);
+
+            console.log('u');
+        }
+        this.gameboard.appendChild(newRow);
     }
+
 
 
     start(){
