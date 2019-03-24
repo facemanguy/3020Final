@@ -9,44 +9,14 @@ fill.addEventListener('dragstart', dragStart);
 fill.addEventListener('dragend', dragEnd);
 
 //loop through empties and call drag events
-for(const empty of empties) {
+for(this.empty of empties) {
     empty.addEventListener('dragover', dragOver);
     empty.addEventListener('dragenter', dragEnter);
     empty.addEventListener('dragleave', dragLeave);
     empty.addEventListener('drop', dragDrop);
 }
 
-//drag functions
-function dragStart(){
-    console.log('start');
-    this.className += ' hold';
-    setTimeout(() => this.className = 'invisible', 0);
-}
 
-function dragEnd(){
-    console.log('end');
-    this.className = 'fill';
-}
-
-function dragOver() {
-    event.preventDefault();
-}
-
-function dragEnter() {
-    event.preventDefault();
-    this.className += ' hovered';
-}
-
-function dragLeave() {
-    this.className = 'empty';
-}
-
-function dragDrop() {
-    this.className = 'empty'
-    this.append(fill);
-}
-
-//document.getElementById("choice2").addEventListener("dragdrop", checkItem());
 class Puzzle {
     constructor(){
         this.gameboard = document.querySelector('#gameboard');
@@ -91,11 +61,11 @@ class Puzzle {
 
             let newFiller = document.createElement('div');
             newFiller.setAttribute('class', 'fill');
-            console.log('x')
+            newFiller.setAttribute('draggable', 'true');
+            
+            newTile.setAttribute('data-x',3);
 
-            //newTile.setAttribute('data-x',i);
-
-            //newTile.setAttribute('data-y',j);
+            newTile.setAttribute('data-y',u);
 
             newCol.appendChild(newTile);
 
@@ -106,6 +76,7 @@ class Puzzle {
             console.log('u');
         }
         this.gameboard.appendChild(newRow);
+        this.setUpFillListeners();
     }
 
 
@@ -117,7 +88,15 @@ class Puzzle {
         console.log('set up board');
 
     }
+
+    setUpFillListeners(){
+        let fillerElements = document.querySelectorAll('.fill');
     
+        for (const filler of fillerElements){
+          filler.addEventListener('ondragstart', dragging);
+        }
+    }
+
 }
 
 document.addEventListener('DOMContentLoaded',(event)=>{
@@ -130,3 +109,37 @@ document.addEventListener('DOMContentLoaded',(event)=>{
   
   });
   
+  //drag functions
+/*
+function dragging(event){
+    console.log('dragging');
+} */
+
+function dragStart(){
+    console.log('start');
+    this.className += ' hold';
+    setTimeout(() => this.className = 'invisible', 0);
+}
+
+function dragEnd(){
+    console.log('end');
+    this.className = 'fill';
+}
+
+function dragOver() {
+    event.preventDefault();
+}
+
+function dragEnter() {
+    event.preventDefault();
+    this.className += ' hovered';
+}
+
+function dragLeave() {
+    this.className = 'empty';
+}
+
+function dragDrop() {
+    this.className = 'empty'
+    this.append(fill);
+}
