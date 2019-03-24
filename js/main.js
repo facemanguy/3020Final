@@ -44,3 +44,11 @@ function dragDrop() {
     this.className = 'empty'
     this.append(fill);
 }
+
+document.getElementById("choice2").addEventListener("dragdrop", checkItem());
+
+function checkItem(){
+    if (this.className = 'fill'){
+        console.log('checked')
+    }
+}
