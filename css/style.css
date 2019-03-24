@@ -40,3 +40,13 @@ body {
 .invisible {
   display: none;
 }
+
+#gameboard {
+  background-color: rgba(253, 255, 252, 0.1);
+}
+/*#gameboard .row div {
+  text-align: center;
+}
+#gameboard div.col-xs-3 {
+  width: 33%;
+}*/
