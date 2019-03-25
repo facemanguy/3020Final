@@ -1,8 +1,8 @@
 //javascript
 let game;
 
-const fill = document.querySelector('.fill');
-const empties = document.querySelectorAll('.empty');
+var fill = document.querySelector('.fill');
+var empties = document.querySelectorAll('.empty');
 
 // fill listeners
 fill.addEventListener('dragstart', dragStart);
@@ -20,6 +20,8 @@ for(this.empty of empties) {
 class Puzzle {
     constructor(){
         this.gameboard = document.querySelector('#gameboard');
+
+        this.dragTrigger = document.querySelector('.fill');
     }
 
     setUpBoard(){
@@ -36,6 +38,7 @@ class Puzzle {
                     let newTile = document.createElement('div');
                     newTile.setAttribute('class','empty');
 
+                    //newTile.setAttribute(event.preventDefault());
                     
                     newTile.setAttribute('data-x',i);
 
@@ -97,6 +100,8 @@ class Puzzle {
         }
     }
 
+
+
 }
 
 document.addEventListener('DOMContentLoaded',(event)=>{
@@ -110,12 +115,10 @@ document.addEventListener('DOMContentLoaded',(event)=>{
   });
   
   //drag functions
-/*
-function dragging(event){
-    console.log('dragging');
-} */
 
-function dragStart(){
+
+function dragStart(event){
+    game.dragTrigger();
     console.log('start');
     this.className += ' hold';
     setTimeout(() => this.className = 'invisible', 0);
@@ -142,4 +145,9 @@ function dragLeave() {
 function dragDrop() {
     this.className = 'empty'
     this.append(fill);
+}
+
+function dragging(dragTrigger){
+    dragStart();
+    console.log('dragging')
 }
